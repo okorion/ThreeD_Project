@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import sceneStore from "../Store/scene.store";
-import primitivesStore from "../Store/primitives.store";
 
 function Scene() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -9,10 +8,7 @@ function Scene() {
   useEffect(() => {
     if (!canvasRef.current) return;
 
-    // Scene 생성
     const scene = sceneStore.scene;
-
-    // Camera 생성
     const camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
@@ -20,7 +16,6 @@ function Scene() {
       1000
     );
 
-    // Renderer 생성
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
