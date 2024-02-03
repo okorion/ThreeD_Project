@@ -34,7 +34,7 @@ function Scene() {
 
     // Camera 위치 설정
     sceneStore.setCameraLookAt(new THREE.Vector3(0, 0, 0));
-    sceneStore.setCameraPosition(new THREE.Vector3(5, 5, 0));
+    sceneStore.setCameraPosition(new THREE.Vector3(7, 4, 2));
 
     renderer.render(scene, camera);
 

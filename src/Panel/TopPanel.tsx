@@ -11,6 +11,7 @@ const TopPanel = () => {
           const geometry = new THREE.BoxGeometry();
           const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
           const cube = new THREE.Mesh(geometry, material);
+          cube.position.set(0, 0.5, 0);
 
           primitivesStore.addPrimitive(cube);
           sceneStore.scene.add(cube);
@@ -20,7 +21,7 @@ const TopPanel = () => {
       </button>
       <button
         onClick={() => {
-          const geometry = new THREE.SphereGeometry(15, 32, 16);
+          const geometry = new THREE.SphereGeometry(1, 32, 32);
           const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
           const sphere = new THREE.Mesh(geometry, material);
 
@@ -32,9 +33,11 @@ const TopPanel = () => {
       </button>
       <button
         onClick={() => {
-          const geometry = new THREE.ConeGeometry(5, 20, 32);
+          const geometry = new THREE.ConeGeometry(1, 2, 32);
           const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
           const cone = new THREE.Mesh(geometry, material);
+
+          cone.position.set(0, 1, 0);
 
           primitivesStore.addPrimitive(cone);
           sceneStore.scene.add(cone);
@@ -44,9 +47,10 @@ const TopPanel = () => {
       </button>
       <button
         onClick={() => {
-          const geometry = new THREE.CylinderGeometry(5, 5, 20, 32);
+          const geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 32);
           const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
           const cylinder = new THREE.Mesh(geometry, material);
+          cylinder.position.set(0, 0.5, 0);
 
           primitivesStore.addPrimitive(cylinder);
           sceneStore.scene.add(cylinder);
