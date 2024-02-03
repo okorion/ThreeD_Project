@@ -48,8 +48,13 @@ function Scene() {
       const width = window.innerWidth;
       const height = window.innerHeight;
       renderer.setSize(width, height);
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
+
+      if (canvasRef.current) {
+        camera.aspect =
+          canvasRef.current.clientWidth / canvasRef.current.clientHeight;
+        camera.updateProjectionMatrix();
+      }
+      renderer.render(scene, camera);
     };
 
     // 윈도우 리사이즈 이벤트 리스너 등록
