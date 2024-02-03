@@ -26,6 +26,11 @@ function Scene() {
     directionalLight.position.set(1, 1, 1).normalize();
     scene.add(directionalLight);
 
+    const size = 10;
+    const divisions = 10;
+    const gridHelper = new THREE.GridHelper(size, divisions);
+    scene.add(gridHelper);
+
     // Cube 생성
     const geometry = new THREE.BoxGeometry();
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
@@ -33,19 +38,11 @@ function Scene() {
     scene.add(cube);
 
     // Camera 위치 설정
-    camera.position.z = 5;
+    camera.position.set(5, 5, 0);
+    camera.lookAt(0, 0, 0);
 
-    function animate() {
-      requestAnimationFrame(animate);
+    renderer.render(scene, camera);
 
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-
-      renderer.render(scene, camera);
-    }
-
-    animate();
-    // Animation 함수 정의
     // 윈도우 리사이즈 이벤트 핸들러
     const handleResize = () => {
       const width = window.innerWidth;
