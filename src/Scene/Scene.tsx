@@ -9,15 +9,10 @@ function Scene() {
     if (!canvasRef.current) return;
 
     const scene = sceneStore.scene;
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
+    const camera = sceneStore.camera;
 
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth - 50, window.innerHeight - 25);
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
@@ -38,15 +33,15 @@ function Scene() {
     scene.add(cube);
 
     // Camera 위치 설정
-    camera.position.set(5, 5, 0);
-    camera.lookAt(0, 0, 0);
+    sceneStore.setCameraLookAt(new THREE.Vector3(0, 0, 0));
+    sceneStore.setCameraPosition(new THREE.Vector3(5, 5, 0));
 
     renderer.render(scene, camera);
 
     // 윈도우 리사이즈 이벤트 핸들러
     const handleResize = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      const width = window.innerWidth - 50;
+      const height = window.innerHeight - 25;
       renderer.setSize(width, height);
 
       if (canvasRef.current) {
